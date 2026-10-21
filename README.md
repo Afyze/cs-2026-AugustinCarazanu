@@ -30,7 +30,7 @@ python3 gui.py
 - `lab1/cipher.py` – letter encoding, validation, permuted alphabet, encryption and decryption
 - `lab1/gui.py` – Tkinter interface
 - `lab1/screenshots/` – screenshots used in the report
-- `lab1/Lab1_AugustinCarazanu_FAF-243.docx` – the report
+- `lab1/Lab1_AugustinCarazanu_FAF-243.pdf` – the report
 
 ## Lab 2 – Cryptanalysis of monoalphabetic ciphers (variant 3)
 
@@ -47,4 +47,4 @@ python3 gui.py
 - `lab2/gui.py` – Tkinter interface
 - `lab2/ciphertext_v3.txt` – the ciphertext of variant 3
 - `lab2/screenshots/` – screenshots used in the report
-- `lab2/Lab2_AugustinCarazanu_FAF-243.docx` – the report
+- `lab2/Lab2_AugustinCarazanu_FAF-243.pdf` – the report
