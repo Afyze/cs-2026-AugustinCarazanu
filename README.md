@@ -7,7 +7,7 @@ Technical University of Moldova, FCIM
 | Lab | Topic | Folder |
 |-----|-------|--------|
 | 1 | The Caesar Cipher and the Caesar Cipher with a Permutation | [lab1](lab1) |
-| 2 | Cryptanalysis of Monoalphabetic Ciphers (frequency analysis, variant 3) | [lab2](lab2) |
+| 2 | Cryptanalysis of Monoalphabetic Ciphers (frequency analysis with Crypto Corner, variant 3) | [lab2](lab2) |
 
 ## Lab 1 – Caesar cipher (Romanian alphabet, n = 31)
 
@@ -34,17 +34,11 @@ python3 gui.py
 
 ## Lab 2 – Cryptanalysis of monoalphabetic ciphers (variant 3)
 
-The intercepted English ciphertext is broken by frequency analysis. The Tkinter tool counts the letter
-frequencies, compares them with English, shows the most frequent digrams and trigrams and applies a
-partial key after every guess (solved letters in lowercase, unknown ones in UPPERCASE).
+The intercepted English ciphertext was broken by frequency analysis with the online tool required by the lab sheet:
+[Crypto Corner – Frequency Analysis: Breaking the Code](https://crypto.interactive-maths.com/frequency-analysis-breaking-the-code.html).
+The letter frequencies, digraphs, trigraphs and doubles were found with the tool, and the key was built in 9 steps
+(solved letters appear in lowercase, unknown ones in UPPERCASE).
 
-```bash
-cd lab2
-python3 gui.py
-```
-
-- `lab2/analysis.py` – frequencies, n-grams, partial key, key check
-- `lab2/gui.py` – Tkinter interface
 - `lab2/ciphertext_v3.txt` – the ciphertext of variant 3
-- `lab2/screenshots/` – screenshots used in the report
+- `lab2/screenshots/` – screenshots of the tool after every step
 - `lab2/Lab2_AugustinCarazanu_FAF-243.pdf` – the report
