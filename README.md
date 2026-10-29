@@ -8,6 +8,7 @@ Technical University of Moldova, FCIM
 |-----|-------|--------|
 | 1 | The Caesar Cipher and the Caesar Cipher with a Permutation | [lab1](lab1) |
 | 2 | Cryptanalysis of Monoalphabetic Ciphers (frequency analysis with Crypto Corner, variant 3) | [lab2](lab2) |
+| 3 | Polyalphabetic Ciphers – the Playfair cipher for Romanian (Task 3.1) | [lab3](lab3) |
 
 ## Lab 1 – Caesar cipher (Romanian alphabet, n = 31)
 
@@ -42,3 +43,18 @@ The letter frequencies, digraphs, trigraphs and doubles were found with the tool
 - `lab2/ciphertext_v3.txt` – the ciphertext of variant 3
 - `lab2/screenshots/` – screenshots of the tool after every step
 - `lab2/Lab2_AugustinCarazanu_FAF-243.pdf` – the report
+
+## Lab 3 – The Playfair cipher (Task 3.1)
+
+Playfair for messages in Romanian (31 letters): a 5 × 6 matrix, J replaced by I, X as the filler letter
+(Q when the letter to separate is X). Only Romanian letters are accepted, the key has at least 7 letters.
+
+```bash
+cd lab3
+python3 gui.py
+```
+
+- `lab3/playfair.py` – text preparation, matrix, encryption and decryption
+- `lab3/gui.py` – Tkinter interface
+- `lab3/screenshots/` – screenshots used in the report
+- `lab3/Lab3_AugustinCarazanu_FAF-243.pdf` – the report
