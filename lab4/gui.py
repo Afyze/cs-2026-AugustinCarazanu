@@ -73,7 +73,7 @@ class KeyScheduleApp(tk.Tk):
         out.grid(row=1, column=0, sticky="nsew")
         out.columnconfigure(0, weight=1)
         out.rowconfigure(0, weight=1)
-        self.text = tk.Text(out, width=100, height=30, font=self.mono, wrap="none", bg="#FAFAFA")
+        self.text = tk.Text(out, width=104, height=34, font=self.mono, wrap="none", bg="#FAFAFA")
         self.text.grid(row=0, column=0, sticky="nsew")
         sb = ttk.Scrollbar(out, orient="vertical", command=self.text.yview)
         sb.grid(row=0, column=1, sticky="ns")
@@ -127,11 +127,21 @@ class KeyScheduleApp(tk.Tk):
         self.kplus.delete(0, "end")
         self.kplus.insert(0, group(kp, 7))
         self.text.delete("1.0", "end")
-        self.write("K+ obtained from the key \"{}\"".format(self.key8.get()), "h")
-        self.write("K (64 bits, ASCII) = " + group(k64, 8))
-        self.write("PC-1 (Permuted Choice 1): 64 bits of K -> 56 bits of K+")
+        key = self.key8.get()
+        self.write("K+ obtained from the key \"{}\"".format(key), "h")
+        self.write("Step A. Each character -> 8 bits, using the ASCII table")
+        self.write("   char  dec  hex  binary")
+        for ch in key:
+            self.write(f"    {ch!s:>2}   {ord(ch):>3}   {ord(ch):02X}  {ord(ch):08b}")
+        self.write("K (64 bits) = " + group(k64, 8))
+        self.write("Parity bits 8, 16, 24, 32, 40, 48, 56, 64 of K = "
+                   + " ".join(k64[j - 1] for j in range(8, 65, 8)) + "  (dropped by PC-1)")
+        self.write()
+        self.write("Step B. PC-1 (Permuted Choice 1): 64 bits of K -> 56 bits of K+")
         self.write(table_text(PC1, 7))
+        self.write("First rows (bits 57, 49, ..., 36 of K) give C0, last rows (63, 55, ..., 4) give D0.")
         self.write("K+ = PC-1(K)      = " + group(kp, 7), "res")
+        self.write("K+ (hex)          = " + to_hex(kp), "res")
         self.result.config(text=" ")
         self.write()
         self.status.config(text="K+ is ready. Choose the round i and press “Compute Ki”.",
@@ -158,13 +168,19 @@ class KeyScheduleApp(tk.Tk):
         self.write(f"Step 2. Shift C and D to the left, rounds 1..{i}", "h")
         for n, s, c, d in r["steps"][1:]:
             tag = "hi" if n == i else None
-            self.write(f"Round {n:>2} ({s} shift{'s' if s > 1 else ' '}):  "
+            self.write(f"LS{n:<2} ({s} shift{'s' if s > 1 else ' '}):  "
                        f"C{n:<2}= {group(c, 7)}   D{n:<2}= {group(d, 7)}", tag)
         self.write()
         self.write(f"Step 3. Join C{i} and D{i}", "h")
         self.write(f"C{i}D{i} = " + group(r["CD"], 7))
         self.write()
         self.write(f"Step 4. Apply PC-2 to C{i}D{i} (take bits 14, 17, 11, 24, 1, 5, ...)", "h")
+        cd = r["CD"]
+        self.write("   position in C{0}D{0} : bit  (one row = one 6-bit group of K{0})".format(i))
+        for row in range(8):
+            cells = PC2[row * 6:(row + 1) * 6]
+            pairs = "  ".join(f"{p:>2}:{cd[p - 1]}" for p in cells)
+            self.write(f"   {pairs}   ->  {''.join(cd[p - 1] for p in cells)}")
         self.write(f"K{i} = PC-2(C{i}D{i}) = " + group(r["K"], 6), "res")
         self.write(f"K{i} (hex) = " + to_hex(r["K"]), "res")
         self.write()

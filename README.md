@@ -64,8 +64,9 @@ python3 gui.py
 
 Task number: n mod 11 = 3 mod 11 = 3. Given K+ (56 bits), the program computes C0 and D0, the left shifts
 up to round i and PC-2, displaying the tables and every intermediate step. K+ can be typed (binary or hex),
-generated randomly or computed from an 8-character key with PC-1. Checked against the standard example
-key 133457799BBCDFF1 (K1, K3, K16).
+generated randomly or computed from an 8-character key (ASCII + PC-1). Step 4 shows PC-2 bit by bit.
+Checked with exercises 13 and 14 from the lecture (A. Zgureanu, Tema 4) and the standard example key
+133457799BBCDFF1 (K1, K16).
 
 ```bash
 cd lab4
