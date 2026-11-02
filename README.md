@@ -9,6 +9,7 @@ Technical University of Moldova, FCIM
 | 1 | The Caesar Cipher and the Caesar Cipher with a Permutation | [lab1](lab1) |
 | 2 | Cryptanalysis of Monoalphabetic Ciphers (frequency analysis with Crypto Corner, variant 3) | [lab2](lab2) |
 | 3 | Polyalphabetic Ciphers – the Playfair cipher for Romanian (Task 3.1) | [lab3](lab3) |
+| 4 | Block Ciphers. DES – round key Ki from K+ (Task 2.3) | [lab4](lab4) |
 
 ## Lab 1 – Caesar cipher (Romanian alphabet, n = 31)
 
@@ -58,3 +59,20 @@ python3 gui.py
 - `lab3/gui.py` – Tkinter interface
 - `lab3/screenshots/` – screenshots used in the report
 - `lab3/Lab3_AugustinCarazanu_FAF-243.pdf` – the report
+
+## Lab 4 – DES: round key Ki from K+ (Task 2.3)
+
+Task number: n mod 11 = 3 mod 11 = 3. Given K+ (56 bits), the program computes C0 and D0, the left shifts
+up to round i and PC-2, displaying the tables and every intermediate step. K+ can be typed (binary or hex),
+generated randomly or computed from an 8-character key with PC-1. Checked against the standard example
+key 133457799BBCDFF1 (K1, K3, K16).
+
+```bash
+cd lab4
+python3 gui.py
+```
+
+- `lab4/des_keys.py` – PC-1, PC-2, shift schedule, key schedule
+- `lab4/gui.py` – Tkinter interface
+- `lab4/screenshots/` – screenshots used in the report
+- `lab4/Lab4_AugustinCarazanu_FAF-243.pdf` – the report
